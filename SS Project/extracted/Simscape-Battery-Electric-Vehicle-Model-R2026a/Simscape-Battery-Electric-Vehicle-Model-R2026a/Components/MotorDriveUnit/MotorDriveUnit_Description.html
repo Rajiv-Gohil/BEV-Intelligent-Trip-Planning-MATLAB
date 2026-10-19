@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2026a"><title>Motor Drive Unit component</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+._richTextNode {white-space: break-spaces;}
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S3 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S4 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S5 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 20.4px; min-height: 0px; white-space: pre; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0' id = 'T_1FFD3858' ><span class="_richTextNode">Motor Drive Unit component</span></h1><div  class = 'S1'><span class="_richTextNode">This is a model of motor drive unit (MDU), which is a system consisting of an electric motor and a controller. The MDU model abstracts the dynamic behavior of power conversion between electric and mechanical powers by considering electric power losses within the MDU. The model uses the following block. See the documentation for details.</span></div><ul  class = 'S2'><li  class = 'S3'><a href = "https://www.mathworks.com/help/sps/ref/motordrivesystemlevel.html"><span class="_richTextNode">Motor &amp; Drive (System Level) block</span></a><span class="_richTextNode"> (Simscape Electrical)</span></li></ul><h2  class = 'S4' id = 'H_9924' ><span class="_richTextNode">Abstract motor efficiency model</span></h2><div  class = 'S1'><span class="_richTextNode">The core of the MDU component is the abstract motor efficiency model in the Motor &amp; Drive block. The efficiency model estimates the electrical power losses within an MDU. For more details about the efficiency model, see the </span><a href = "AbstractMotorEfficiencyApp_Description_bevutil1.html"><span class="_richTextNode">description</span></a><span class="_richTextNode"> about </span><a href = "matlab:bevutil1.FileUtil.openApp(&quot;bevutil1_AbstractMotorEfficiencyApp&quot;)"><span class="_richTextNode">the abstract motor efficiency app</span></a><span class="_richTextNode"> in the Modeling Utility for Simscape.</span></div><h2  class = 'S4' id = 'H_7ce5' ><span class="_richTextNode">MDU blocks</span></h2><div  class = 'S1'><span class="_richTextNode">The MDU component provides the following four models. These models are highly abstract and run fast.</span></div><ul  class = 'S2'><li  class = 'S3'><span class="_richTextNode" style=' font-weight: bold;'>Basic model</span><span class="_richTextNode"> (</span><span class="_richTextNode" style=' font-family: monospace;'>MotorDriveUnit_Basic_refsub</span><span class="_richTextNode">) is a model with high-level parameters without thermal model. It uses </span><span class="_richTextNode" style=' font-weight: bold;'>Motor &amp; Drive</span><span class="_richTextNode"> block from Simscape Electrical. The block takes torque command and computes power conversion within an MDU using the </span><span class="_richTextNode" style=' font-weight: bold;'>single efficiency measurement model</span><span class="_richTextNode"> to compute torque-dependent copper-winding losses, speed-dependent iron (eddy current) losses, and constant losses. This model is not configured to simulate temperature dynamics, but the block does support the simulation of temperature dynamics and it is available as </span><span class="_richTextNode" style=' font-weight: bold;'>Basic thermal model</span><span class="_richTextNode"> below.</span></li><li  class = 'S3'><span class="_richTextNode" style=' font-weight: bold;'>Basic thermal model</span><span class="_richTextNode"> (</span><span class="_richTextNode" style=' font-family: monospace;'>MotorDriveUnit_BasicThermal_refsub</span><span class="_richTextNode">) uses </span><span class="_richTextNode" style=' font-weight: bold;'>Motor &amp; Drive</span><span class="_richTextNode"> block, which is the same block as the above </span><span class="_richTextNode" style=' font-weight: bold;'>Basic model</span><span class="_richTextNode"> uses, but with thermal model enabled to simulate motor temperature dynamics.</span></li></ul><h2  class = 'S4' id = 'H_92e3' ><span class="_richTextNode">Simulation cases</span></h2><div  class = 'S1'><span class="_richTextNode">To validate the MDU component, a harness model is used to run some simulation cases. Click the links below to see the simulation results.</span></div><h3  class = 'S5' id = 'H_446d' ><span class="_richTextNode">Basic model</span></h3><ul  class = 'S2'><li  class = 'S3'><a href = "matlab:bevutil1.FileUtil.openScriptInEditor(&quot;MotorDriveUnit_Basic_Drive&quot;)"><span class="_richTextNode">Drive</span></a><span class="_richTextNode"> ... MDU drives axle by consuming electric power.</span></li><li  class = 'S3'><a href = "matlab:bevutil1.FileUtil.openScriptInEditor(&quot;MotorDriveUnit_Basic_RegenBrake&quot;)"><span class="_richTextNode">Regenerative braking</span></a><span class="_richTextNode"> ... Axle drives motor, and MDU generates electric power.</span></li><li  class = 'S3'><a href = "matlab:bevutil1.FileUtil.openScriptInEditor(&quot;MotorDriveUnit_Basic_Random&quot;)"><span class="_richTextNode">Random</span></a><span class="_richTextNode"> .... Input signals for motor torque command and axle load torque are randomly generated.</span></li><li  class = 'S3'><a href = "matlab:bevutil1.FileUtil.openScriptInEditor(&quot;MotorDriveUnit_Basic_Constant&quot;)"><span class="_richTextNode">Constant</span></a><span class="_richTextNode"> ... All inputs are constant. This is used to check that the harness model runs.</span></li></ul><div  class = 'S1'><span class="_richTextNode">For other MDU models, see </span><span class="_richTextNode" style=' font-family: monospace;'>MotorDriveUnit</span><span class="_richTextNode"> &gt; </span><span class="_richTextNode" style=' font-family: monospace;'>Model-*</span><span class="_richTextNode"> &gt; </span><span class="_richTextNode" style=' font-family: monospace;'>SimulationCases</span><span class="_richTextNode"> folders.</span></div><div  class = 'S1'><span class="_richTextNode" style=' font-style: italic;'>Copyright 2020-2026 The Mathworks, Inc.</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Motor Drive Unit component
+% This is a model of motor drive unit (MDU), which is a system consisting of 
+% an electric motor and a controller. The MDU model abstracts the dynamic behavior 
+% of power conversion between electric and mechanical powers by considering electric 
+% power losses within the MDU. The model uses the following block. See the documentation 
+% for details.
+%% 
+% * <https://www.mathworks.com/help/sps/ref/motordrivesystemlevel.html Motor 
+% & Drive (System Level) block> (Simscape Electrical)
+%% Abstract motor efficiency model
+% The core of the MDU component is the abstract motor efficiency model in the 
+% Motor & Drive block. The efficiency model estimates the electrical power losses 
+% within an MDU. For more details about the efficiency model, see the <AbstractMotorEfficiencyApp_Description_bevutil1.html 
+% description> about <matlab:bevutil1.FileUtil.openApp("bevutil1_AbstractMotorEfficiencyApp") 
+% the abstract motor efficiency app> in the Modeling Utility for Simscape.
+%% MDU blocks
+% The MDU component provides the following four models. These models are highly 
+% abstract and run fast.
+%% 
+% * *Basic model* (|MotorDriveUnit_Basic_refsub|) is a model with high-level 
+% parameters without thermal model. It uses *Motor & Drive* block from Simscape 
+% Electrical. The block takes torque command and computes power conversion within 
+% an MDU using the *single efficiency measurement model* to compute torque-dependent 
+% copper-winding losses, speed-dependent iron (eddy current) losses, and constant 
+% losses. This model is not configured to simulate temperature dynamics, but the 
+% block does support the simulation of temperature dynamics and it is available 
+% as *Basic thermal model* below.
+% * *Basic thermal model* (|MotorDriveUnit_BasicThermal_refsub|) uses *Motor 
+% & Drive* block, which is the same block as the above *Basic model* uses, but 
+% with thermal model enabled to simulate motor temperature dynamics.
+%% Simulation cases
+% To validate the MDU component, a harness model is used to run some simulation 
+% cases. Click the links below to see the simulation results.
+% Basic model
+%% 
+% * <matlab:bevutil1.FileUtil.openScriptInEditor("MotorDriveUnit_Basic_Drive") 
+% Drive> ... MDU drives axle by consuming electric power.
+% * <matlab:bevutil1.FileUtil.openScriptInEditor("MotorDriveUnit_Basic_RegenBrake") 
+% Regenerative braking> ... Axle drives motor, and MDU generates electric power.
+% * <matlab:bevutil1.FileUtil.openScriptInEditor("MotorDriveUnit_Basic_Random") 
+% Random> .... Input signals for motor torque command and axle load torque are 
+% randomly generated.
+% * <matlab:bevutil1.FileUtil.openScriptInEditor("MotorDriveUnit_Basic_Constant") 
+% Constant> ... All inputs are constant. This is used to check that the harness 
+% model runs.
+%% 
+% For other MDU models, see |MotorDriveUnit| > |Model-*| > |SimulationCases| 
+% folders.
+% 
+% _Copyright 2020-2026 The Mathworks, Inc._
+##### SOURCE END #####
+-->
+</div></body></html>

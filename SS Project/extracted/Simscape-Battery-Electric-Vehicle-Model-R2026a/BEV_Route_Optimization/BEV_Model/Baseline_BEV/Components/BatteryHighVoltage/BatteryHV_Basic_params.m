@@ -1,0 +1,9 @@
+batteryHV.nominalVoltage_V = 340;
+batteryHV.nominalCapacity_kWh = 60;
+batteryHV.nominalCharge_Ahr = batteryHV.nominalCapacity_kWh*1000/batteryHV.nominalVoltage_V;
+batteryHV.internalResistance_Ohm = 0.01;
+batteryHV.measuredVoltage_V = batteryHV.nominalVoltage_V*0.9;
+batteryHV.measuredCharge_Ahr = batteryHV.nominalCharge_Ahr*0.5;
+batteryHV.ambientTemp_K = 273.15+20;
+initial.hvBattery_SOC_pct = 70;
+initial.hvBattery_Charge_Ahr = batteryHV.nominalCharge_Ahr*initial.hvBattery_SOC_pct/100;

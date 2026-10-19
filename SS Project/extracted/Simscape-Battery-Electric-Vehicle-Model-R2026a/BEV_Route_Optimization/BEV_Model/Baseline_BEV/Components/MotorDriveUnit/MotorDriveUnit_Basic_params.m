@@ -1,0 +1,11 @@
+MotorDriveUnit.MaxTorque_Nm = 420;
+MotorDriveUnit.MaxPower_kW = 220;
+MotorDriveUnit.ResponseTime_s = 0.020;
+MotorDriveUnit.ElectricalEfficiencyPercent = 95;
+MotorDriveUnit.MeasuredAngularSpeed_rpm = 2000;
+MotorDriveUnit.MeasuredTorque_Nm = 50;
+MotorDriveUnit.MeasuredIronLosses_W = 55;
+MotorDriveUnit.FixedLosses_W = 40;
+MotorDriveUnit.RotorInertia_kgm2 = 5*0.01^2;
+MotorDriveUnit.RotorDamping_Nms = 1e-5;
+initial.MotorDriveUnit_RotorAngularSpeed_rpm = 0;

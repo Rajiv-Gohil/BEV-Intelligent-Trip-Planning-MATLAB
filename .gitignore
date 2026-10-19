@@ -1,0 +1,13 @@
+# MATLAB & Simulink autosave and cache
+*.asv
+*.slxc
+slprj/
+*.tmp
+
+# System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Large duplicate zip archives
+*.zip

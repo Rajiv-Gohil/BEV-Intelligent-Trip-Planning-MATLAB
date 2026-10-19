@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Verify Tiles Subfolder</title></head>
+<body>
+<div id="log">Testing...</div>
+<script>
+let hc = null;
+function testImg(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve({url, status: 'LOADED', w: img.naturalWidth, h: img.naturalHeight});
+    img.onerror = (e) => resolve({url, status: 'ERROR'});
+    img.src = url;
+  });
+}
+async function runTests() {
+  const r1 = await testImg('tiles/m_9_359_223.png');
+  const r2 = await testImg('tiles/y_9_359_223.jpg');
+  const results = [r1, r2];
+  document.getElementById('log').innerText = JSON.stringify(results);
+  if (hc) {
+    hc.sendEventToMATLAB('verifyTilesDone', JSON.stringify(results));
+  }
+}
+function setup(comp) {
+  hc = comp;
+  runTests();
+}
+</script>
+</body>
+</html>

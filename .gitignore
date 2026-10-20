@@ -11,3 +11,7 @@ Desktop.ini
 
 # Large duplicate zip archives
 *.zip
+
+# College internal lab submissions (kept locally only)
+Lab_Submissions/
+
